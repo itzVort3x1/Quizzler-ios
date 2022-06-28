@@ -25,11 +25,13 @@ struct QuizBrain {
     ]
     
     var questionNumber = 0;
+    var score = 0;
         
-    func checkAnswer(userAnswer: String) -> Bool{
+    mutating func checkAnswer(userAnswer: String) -> Bool{
         
         if(userAnswer == quiz[questionNumber].answer){
             //user
+            updateScore()
             return true
 //            sender.backgroundColor = UIColor.green
         }else {
@@ -50,9 +52,18 @@ struct QuizBrain {
         return Float(questionNumber + 1) / Float(quiz.count)
     }
     
+    func getScore() -> Int {
+        return score
+    }
+    
+    mutating func updateScore() {
+        score += 1;
+    }
+    
     mutating func nextQuestion(){
         if(questionNumber + 1 >= quiz.count){
             questionNumber = 0;
+            score = 0
         }else {
             questionNumber += 1;
         }
