@@ -51,7 +51,7 @@ struct QuizBrain {
     }
     
     mutating func nextQuestion(){
-        if(questionNumber + 1 < quiz.count){
+        if(questionNumber + 1 >= quiz.count){
             questionNumber = 0;
         }else {
             questionNumber += 1;
